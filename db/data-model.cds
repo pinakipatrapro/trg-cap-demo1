@@ -24,3 +24,5 @@ entity Genres : sap.common.CodeList {
   parent   : Association to Genres;
   children : Composition of many Genres on children.parent = $self;
 }
+
+

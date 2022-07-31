@@ -1,12 +1,19 @@
 /**
 * Implementation for CatalogService defined in ./cat-service.cds
 */
+
+
 const cds = require('@sap/cds')
-module.exports = function (){
+const {
+    submitOrder
+}=require('./libs/SubmitOrder')
+
+module.exports = function (srv){
   // Register your event handlers in here, e.g....
-  this.after ('READ','Books', each => {
+  srv.after ('READ','Books', each => {
     if (each.stock > 111) {
       each.title += ` -- 11% discount!`
     }
-  })
+  });
+  srv.on('submitOrder', submitOrder);
 }
